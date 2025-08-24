@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Tools Main Page -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/tools</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Currency Converter Tool -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/currency-converter</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Text Case Converter -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/text-converter</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Postal Code Finder -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/postal-code</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/about</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/contact</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://hussain-bin-ali.github.io/ToolifyHub/privacy</loc>
+    <lastmod>2025-08-24</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
