@@ -28,33 +28,16 @@
     a{color:inherit}
 
     /* Header */
-    header {
+    header{
       position:fixed;top:0;left:0;right:0;height:68px;
       display:flex;align-items:center;gap:16px;padding:10px 20px;
       background:linear-gradient(90deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));
       backdrop-filter: blur(6px); z-index:30;
     }
-
-    .brand {
-  display: flex;
-  align-items: center;
-  gap: 20px;             /* Adds space between logo and heading */
-}
-
-.brand img {
-  height: 120px;          /* Adjust this value as needed */
-  width: auto;            /* Preserves aspect ratio */
-  object-fit: contain;
-}
-
-.brand h1 {
-  font-size: 28px;
-  margin: 0;
-  color: #fff;
-  font-weight: 800;
-}
-
-}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:48px;width:48px;border-radius:10px;object-fit:cover}
+    .brand h1{font-size:18px;margin:0;color:#fff;font-weight:800}
+    .header-right{margin-left:auto;color:rgba(255,255,255,0.95);text-align:right;font-size:13px}
 
     /* Layout */
     .page{display:grid;grid-template-columns:240px 1fr;gap:20px;padding:90px 28px 28px;align-items:start;max-width:1200px;margin:auto}
@@ -543,11 +526,4 @@
   })();
   </script>
 </body>
-</html>
-
-
-
-
-
-
-
+</html> 
