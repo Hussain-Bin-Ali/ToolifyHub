@@ -27,8 +27,7 @@
     body{margin:0;background:var(--bg-grad);min-height:100vh;color:#02203c}
     a{color:inherit}
 
-    /* Header */
-    header{
+    /* Header */ header{
       position:top:0;left:0;right:0;height:68px;
       display:flex;align-items:center;gap:16px;padding:10px 20px;
       background:linear-gradient(90deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));
@@ -36,7 +35,7 @@
     }
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:48px;width:48px;border-radius:10px;object-fit:cover}
-    .brand h1{font-size:25px;margin:0;color:#fff;font-weight:800}
+    .brand h1{font-size:18px;margin:0;color:#fff;font-weight:800}
     .header-right{margin-left:auto;color:rgba(255,255,255,0.95);text-align:right;font-size:13px}
 
     /* Layout */
@@ -104,16 +103,11 @@
   </style>
 </head>
 <body>
+   <!-- Header: only logo -->
   <header>
-    <div class="brand" style="gap:12px;">
+    <div class="brand">
       <img src="logo.png" alt="ToolifyHub logo" onerror="this.style.display='none'">
-      <div>
-        <h1>ToolifyHub</h1>
-        <div style="font-size:12px;color:rgba(255,255,255,0.9)">Fast • Mobile-friendly • No signup</div>
-      </div>
     </div>
-
-    <div class="header-right" id="visitor-info">Loading visitor info…</div>
   </header>
 
   <div class="page">
@@ -527,6 +521,7 @@
   </script>
 </body>
 </html> 
+
 
 
 
