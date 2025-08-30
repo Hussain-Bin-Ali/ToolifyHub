@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -9,38 +9,101 @@
   <meta name="robots" content="index,follow" />
   <link rel="icon" href="logo.png" />
   <style>
-    /* same CSS from your code ... */
+    /* Theme: indigo -> purple -> aqua */
     :root{
-      --g1:#1e3c72; --g2:#8e2de2; --g3:#00c9a7;
+      --g1:#1e3c72; /* indigo */
+      --g2:#8e2de2; /* purple */
+      --g3:#00c9a7; /* sea/aqua */
       --bg-grad: linear-gradient(135deg,var(--g1),var(--g2),var(--g3));
       --card-bg: rgba(255,255,255,0.96);
-      --muted:#475569; --radius:12px; --max-field:320px;
+      --card-contrast: rgba(255,255,255,0.88);
+      --muted:#475569;
+      --accent:#2563eb;
+      --radius:12px;
+      --max-field:320px;
     }
-    *{box-sizing:border-box;font-family:Inter,system-ui,Arial}
+
+    *{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
     body{margin:0;background:var(--bg-grad);min-height:100vh;color:#02203c}
-    header{position:fixed;top:0;left:0;right:0;height:68px;
+    a{color:inherit}
+
+    /* Header */ header{
+      position:top:0;left:0;right:0;height:68px;
       display:flex;align-items:center;gap:16px;padding:10px 20px;
-      background:linear-gradient(90deg,rgba(0,0,0,0.12),rgba(255,255,255,0.02));
-      backdrop-filter: blur(6px); z-index:30;}
+      background:linear-gradient(90deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px); z-index:30;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:48px;width:48px;border-radius:10px;object-fit:cover}
-    .page{display:grid;grid-template-columns:240px 1fr;gap:20px;
-      padding:90px 28px 28px;max-width:1200px;margin:auto}
-    nav.sidebar{background:rgba(255,255,255,0.06);border-radius:var(--radius);
-      padding:18px;height:calc(100vh - 140px);overflow:auto;
-      box-shadow:0 8px 30px rgba(2,6,23,0.18);position:sticky;top:90px;}
-    main.content{overflow:auto;padding-bottom:80px;}
-    .card{background:var(--card-bg);border-radius:var(--radius);padding:18px;margin-bottom:18px}
-    footer{position:fixed;left:240px;right:0;bottom:0;padding:10px 18px;
-      background:rgba(255,255,255,0.06);color:#fff;font-size:13px}
+    .brand h1{font-size:18px;margin:0;color:#fff;font-weight:800}
+    .header-right{margin-left:auto;color:rgba(255,255,255,0.95);text-align:right;font-size:13px}
+
+    /* Layout */
+    .page{display:grid;grid-template-columns:240px 1fr;gap:20px;padding:90px 28px 28px;align-items:start;max-width:1200px;margin:auto}
+    nav.sidebar{
+      background:rgba(255,255,255,0.06);border-radius:var(--radius);padding:18px;height:calc(100vh - 140px);overflow:auto;
+      box-shadow:0 8px 30px rgba(2,6,23,0.18);
+      position:sticky;top:90px;
+    }
+    nav h3{margin:0 0 12px 0;color:#fff;font-size:14px}
+    .menu-btn{display:block;width:100%;text-align:left;padding:10px;border-radius:8px;border:none;background:transparent;color:#fff;font-weight:700;margin-bottom:8px;cursor:pointer}
+    .menu-btn:hover{background:rgba(255,255,255,0.06)}
+    .menu-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:8px;padding-left:6px}
+
+    main.content{
+      overflow:auto; padding-bottom:80px;
+    }
+    .card{
+      background:var(--card-bg); border-radius:var(--radius); padding:18px; margin-bottom:18px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+    }
+    h2{margin:0 0 8px 0;color:var(--g1)}
+    p.lead{margin:0 0 12px 0;color:var(--muted);line-height:1.5}
+
+    /* Inputs consistent */
+    .control{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    input[type="text"], input[type="number"], input[type="date"], select, textarea {
+      width:100%; max-width:var(--max-field); padding:10px 12px;border-radius:10px;border:1px solid #e6eef8;background:#fff;color:#02203c;
+      font-weight:700;
+    }
+    textarea{min-height:110px;resize:vertical}
+    button.primary{
+      padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--g2),var(--g3));color:#012;font-weight:800;cursor:pointer;
+      box-shadow:0 8px 20px rgba(2,6,23,0.08);
+    }
+    .result{
+      margin-top:10px;padding:12px;border-radius:10px;background:#f7fafc;color:#02203c;border:1px solid #e6eef8;font-weight:800;display:inline-block;
+      max-width:100%;
+    }
+
+    /* Calculator professional style */
+    .calc-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+    .calc-screen{width:100%;max-width:420px;padding:14px;border-radius:12px;background:#fff;border:1px solid #e6eef8;color:#02203c;font-weight:800;font-size:20px;text-align:right}
+    /* Increased button width slightly (from 64px to 76px) as requested */
+    .keypad{display:grid;grid-template-columns:repeat(4,76px);gap:8px;padding-top:10px}
+    .key{width:76px;height:54px;border-radius:8px;border:none;background:linear-gradient(135deg,#eef2ff,#c7ddff);font-weight:800;cursor:pointer}
+    .key.op{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+    .key.eq{background:linear-gradient(135deg,var(--g3),#2cb67d);color:#012}
+    .key.clear{grid-column:1/-1;background:#ef4444;color:#fff;height:54px}
+
+    /* Responsive */
     @media (max-width:960px){
       .page{grid-template-columns:1fr;padding:120px 16px 80px}
       nav.sidebar{position:relative;top:auto;height:auto;padding:12px;margin-bottom:12px}
+      header{left:0}
       footer{left:0}
+      .calc-wrap{flex-direction:column}
+      .keypad{grid-template-columns:repeat(4,1fr)}
+      .key{width:100%;height:52px}
+      .key.clear{grid-column:1/-1;height:52px}
     }
+
+    footer{position:fixed;left:240px;right:0;bottom:0;padding:10px 18px;background:rgba(255,255,255,0.06);color:#fff;font-size:13px}
+    @media (max-width:960px){footer{left:0}}
   </style>
 </head>
 <body>
-  <!-- Header: only logo -->
+   <!-- Header: only logo -->
   <header>
     <div class="brand">
       <img src="logo.png" alt="ToolifyHub logo" onerror="this.style.display='none'">
@@ -48,9 +111,9 @@
   </header>
 
   <div class="page">
-    <!-- Sidebar (unchanged) -->
-    <nav class="sidebar">
-      <h3>Tools</h3>
+    <!-- left sidebar -->
+    <nav class="sidebar" aria-label="Tools menu">
+      <h3>Tools (click to open)</h3>
       <button class="menu-btn" data-target="currency">💱 Currency Converter</button>
       <button class="menu-btn" data-target="unit">📏 Unit Converter</button>
       <button class="menu-btn" data-target="age">🎂 Age Calculator</button>
@@ -59,48 +122,14 @@
       <button class="menu-btn" data-target="password">🔐 Password Generator</button>
       <button class="menu-btn" data-target="qr">🔲 QR Code Generator</button>
       <button class="menu-btn" data-target="text">✍️ Text Tools</button>
-      <button class="menu-btn" data-target="pdf">📄 PDF Tools</button>
-      <button class="menu-btn" data-target="calc">🧮 Calculator</button>
+      <button class="menu-btn" data-target="pdf">📄 PDF Tools (placeholder)</button>
+      <button class="menu-btn" data-target="calc">🧮 Calculator (last)</button>
+
+      <div class="menu-sub">Tip: All calculations happen in your browser — privacy-friendly.</div>
     </nav>
 
-    <!-- Main Content (all your tools same as before) -->
+    <!-- main content -->
     <main class="content">
-      <!-- all sections currency, unit, age, bmi, loan, password, qr, text, pdf, calc -->
-      <!-- ... keep your existing sections unchanged ... -->
-    </main>
-  </div>
-
-  <!-- Footer: Visitor Info -->
-  <footer id="footer-info">Loading visitor info…</footer>
-
-  <script>
-    // Your existing JS functions for tools stay the same ...
-
-    // Visitor Info with flag, visits count
-    (async function(){
-      const footer = document.getElementById('footer-info');
-      try{
-        const res = await fetch('https://ipapi.co/json/');
-        const data = await res.json();
-
-        // visits tracking (localStorage)
-        let visits = Number(localStorage.getItem("visits")||0)+1;
-        localStorage.setItem("visits",visits);
-        if(!localStorage.getItem("firstVisit")) localStorage.setItem("firstVisit",new Date().toLocaleString());
-        localStorage.setItem("lastVisit",new Date().toLocaleString());
-
-        const flag = data.country_code ? `https://flagsapi.com/${data.country_code}/flat/24.png` : "";
-        footer.innerHTML = 
-          (flag?`<img src="${flag}" alt="${data.country_code}" style="vertical-align:middle;margin-right:6px">`:"") +
-          `${data.city||'—'}, ${data.country_name||'—'} | Visits: ${visits} | First: ${localStorage.getItem("firstVisit")} | Last: ${localStorage.getItem("lastVisit")}`;
-      }catch(e){
-        footer.textContent = "Visitor info unavailable";
-      }
-    })();
-  </script>
-</body>
-</html>
-
       <!-- SEO / long description (250+ words) -->
       <section class="card" id="about">
         <h2>About ToolifyHub</h2>
@@ -492,6 +521,398 @@
   </script>
 </body>
 </html> 
+<!-- SEO / long description (250+ words) -->
+      <section class="card" id="about">
+        <h2>About ToolifyHub</h2>
+        <p class="lead">
+          ToolifyHub is built to put the most useful web tools in a single, fast and mobile-friendly page.
+          Whether you're a student checking your BMI, a traveler converting currencies, a developer generating secure passwords,
+          or a small business owner calculating loan EMIs — ToolifyHub aims to save time and deliver clear results instantly.
+          The modern layout keeps frequently used, viral utilities at the top while placing a handy, professional calculator toward the end for focused tasks.
+          Everything runs in your browser (no signup, no server uploads for most tools), keeping your data private.
+          The site is optimized for speed and SEO with clear headings, meta descriptions, and structured content — making it easy for people to discover and use.
+          We continuously improve the toolset — upcoming additions include in-browser PDF manipulation (merge/split) and advanced text editors.
+          ToolifyHub’s simple design ensures accessibility and good mobile ergonomics: input fields are large enough to tap, results are easy to scan,
+          and the interface responds smoothly across phones and desktops. Add ToolifyHub to bookmarks, share useful tools with friends, and save time on your daily tasks.
+        </p>
+      </section>
+
+      <!-- 1. Currency -->
+      <section class="card tool" id="currency">
+        <h2>Currency Converter</h2>
+        <p class="lead">Quick demo rates included. Replace rates with live API if you want real-time values.</p>
+        <div class="control">
+          <input type="number" id="curAmount" placeholder="Amount (e.g. 100)" />
+          <select id="fromCur">
+            <option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option>
+            <option value="PKR">PKR</option><option value="SAR">SAR</option><option value="AED">AED</option><option value="KWD">KWD</option>
+          </select>
+          <select id="toCur">
+            <option value="PKR">PKR</option><option value="USD">USD</option><option value="EUR">EUR</option>
+            <option value="GBP">GBP</option><option value="SAR">SAR</option><option value="AED">AED</option><option value="KWD">KWD</option>
+          </select>
+          <button class="primary" id="btnConvertCurrency">Convert</button>
+        </div>
+        <div class="result" id="curResult">Converted amount will appear here.</div>
+      </section>
+
+      <!-- 2. Unit Converter -->
+      <section class="card tool" id="unit">
+        <h2>Unit Converter</h2>
+        <p class="lead">Length / Weight / Temperature — common units included.</p>
+        <div class="control">
+          <input type="number" id="unitValue" placeholder="Value" />
+          <select id="unitType">
+            <option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option>
+          </select>
+          <select id="unitFrom"></select>
+          <select id="unitTo"></select>
+          <button class="primary" id="btnConvertUnit">Convert</button>
+        </div>
+        <div class="result" id="unitResult">Unit conversion result here.</div>
+      </section>
+
+      <!-- 3. Age Calculator -->
+      <section class="card tool" id="age">
+        <h2>Age Calculator</h2>
+        <p class="lead">Get exact years / months / days from date of birth.</p>
+        <div class="control">
+          <input type="date" id="dob" />
+          <button class="primary" id="btnCalcAge">Calculate Age</button>
+        </div>
+        <div class="result" id="ageResult">Age result here.</div>
+      </section>
+
+      <!-- 4. BMI -->
+      <section class="card tool" id="bmi">
+        <h2>BMI Calculator</h2>
+        <p class="lead">Enter weight (kg) & height (cm) to get BMI and category.</p>
+        <div class="control">
+          <input type="number" id="weight" placeholder="Weight (kg)" />
+          <input type="number" id="height" placeholder="Height (cm)" />
+          <button class="primary" id="btnCalcBMI">Calculate BMI</button>
+        </div>
+        <div class="result" id="bmiResult">BMI result here.</div>
+      </section>
+
+      <!-- 5. Loan -->
+      <section class="card tool" id="loan">
+        <h2>Loan / EMI Calculator</h2>
+        <p class="lead">Calculate monthly EMI and totals.</p>
+        <div class="control">
+          <input type="number" id="loanAmount" placeholder="Principal (e.g. 100000)" />
+          <input type="number" id="loanRate" placeholder="Annual interest % (e.g. 12)" />
+          <input type="number" id="loanYears" placeholder="Term in years" />
+          <button class="primary" id="btnCalcLoan">Calculate</button>
+        </div>
+        <div class="result" id="loanResult">EMI details here.</div>
+      </section>
+
+      <!-- 6. Password -->
+      <section class="card tool" id="password">
+        <h2>Password Generator</h2>
+        <p class="lead">Generate strong passwords locally — nothing is sent to servers.</p>
+        <div class="control">
+          <input type="number" id="passLength" min="4" max="64" value="12" />
+          <label style="color:var(--muted);width:100%"><input type="checkbox" id="pLower" checked/> include lowercase</label>
+          <label style="color:var(--muted);width:100%"><input type="checkbox" id="pUpper" checked/> include uppercase</label>
+          <label style="color:var(--muted);width:100%"><input type="checkbox" id="pNum" checked/> include numbers</label>
+          <label style="color:var(--muted);width:100%"><input type="checkbox" id="pSym" /> include symbols</label>
+          <button class="primary" id="btnGenPass">Generate</button>
+        </div>
+        <div class="result" id="passResult">Your password will appear here.</div>
+      </section>
+
+      <!-- 7. QR -->
+      <section class="card tool" id="qr">
+        <h2>QR Code Generator</h2>
+        <p class="lead">Enter a URL or text and generate a QR image (downloadable).</p>
+        <div class="control">
+          <input type="text" id="qrText" placeholder="Text or URL" />
+          <button class="primary" id="btnGenQR">Generate QR</button>
+        </div>
+        <div class="result" id="qrResult">QR will appear here.</div>
+      </section>
+
+      <!-- 8. Text Tools -->
+      <section class="card tool" id="text">
+        <h2>Text Tools</h2>
+        <p class="lead">Case converters, word & character counter — helpful for writers and students.</p>
+        <textarea id="txtInput" placeholder="Paste text here..."></textarea>
+        <div class="control">
+          <button class="primary" id="toUpper">UPPERCASE</button>
+          <button class="primary" id="toLower">lowercase</button>
+          <button class="primary" id="btnCountWords">Word Count</button>
+        </div>
+        <div class="result" id="txtResult">Text results here.</div>
+      </section>
+
+      <!-- 9. PDF Tools placeholder -->
+      <section class="card tool" id="pdf">
+        <h2>PDF Tools (coming soon)</h2>
+        <p class="lead">In-browser PDF features will be added soon: PDF → Text extraction, Merge PDF, Split PDF, Compress PDF — all client-side, no upload.</p>
+      </section>
+
+      <!-- 10. Calculator (last) -->
+      <section class="card tool" id="calc">
+        <h2>Calculator</h2>
+        <p class="lead">Modern calculator. Use keyboard or tap buttons. It's placed last by design.</p>
+        <div class="calc-wrap">
+          <input class="calc-screen" id="calcScreen" placeholder="0" readonly />
+          <div>
+            <div class="keypad" id="calcKeypad" aria-label="Calculator keypad">
+              <!-- keys will be rendered by JS for exact order and event delegation -->
+            </div>
+            <div style="margin-top:8px"><button class="primary key clear" id="calcClear">Clear</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visitor info box (added as requested) -->
+      <section class="card" id="visitor-card">
+        <h2>Visitor Information</h2>
+        <p class="lead">Your detected city, region, country and local time (displayed locally only).</p>
+        <div class="result" id="visitorBox">Loading visitor info...</div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>© 2025 ToolifyHub — Fast, free & mobile-friendly</footer>
+
+  <!-- SCRIPT: all JS after DOM so no function-called-before-definition -->
+  <script>
+  (function(){
+    // Helper: show tool by id
+    function showTool(id){
+      document.querySelectorAll('.tool').forEach(t=>t.classList.remove('active'));
+      var el=document.getElementById(id);
+      if(el) el.classList.add('active');
+      // scroll into view for accessibility on small screens
+      el && el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // menu buttons
+    document.querySelectorAll('.menu-btn').forEach(b=>{
+      b.addEventListener('click', e=>{
+        const target=b.getAttribute('data-target');
+        showTool(target);
+      });
+    });
+
+    // start: show first (currency)
+    showTool('currency');
+
+    /* ------------------ Currency ------------------ */
+    const rates = { USD:1, EUR:0.92, GBP:0.79, PKR:278, SAR:3.75, AED:3.67, KWD:0.31, INR:83 };
+    document.getElementById('btnConvertCurrency').addEventListener('click', ()=>{
+      const a = parseFloat(document.getElementById('curAmount').value || '0');
+      const from = document.getElementById('fromCur').value;
+      const to = document.getElementById('toCur').value;
+      if(isNaN(a)){ document.getElementById('curResult').innerText='Enter a valid amount'; return; }
+      const out = (a / (rates[from]||1)) * (rates[to]||1);
+      document.getElementById('curResult').innerText = `${a} ${from} = ${out.toFixed(2)} ${to}`;
+    });
+
+    /* ------------------ Unit ------------------ */
+    const unitMaps = {
+      length: { m:1, cm:0.01, in:0.0254, ft:0.3048 },
+      weight: { kg:1, g:0.001, lb:0.45359237 },
+      temp: { C:1, F:1 } // handled separately
+    };
+    const unitTypeSel = document.getElementById('unitType');
+    const unitFromSel = document.getElementById('unitFrom');
+    const unitToSel = document.getElementById('unitTo');
+
+    function populateUnits(){
+      const t = unitTypeSel.value;
+      unitFromSel.innerHTML = ''; unitToSel.innerHTML='';
+      Object.keys(unitMaps[t]).forEach(u=>{
+        const o1 = document.createElement('option'); o1.value=u; o1.textContent=u; unitFromSel.appendChild(o1);
+        const o2 = document.createElement('option'); o2.value=u; o2.textContent=u; unitToSel.appendChild(o2);
+      });
+      unitToSel.selectedIndex = 1 < unitToSel.options.length ? 1 : 0;
+    }
+    unitTypeSel.addEventListener('change', populateUnits);
+    populateUnits();
+
+    document.getElementById('btnConvertUnit').addEventListener('click', ()=>{
+      const t = unitTypeSel.value;
+      const v = parseFloat(document.getElementById('unitValue').value);
+      const f = unitFromSel.value, to = unitToSel.value;
+      if(isNaN(v)){ document.getElementById('unitResult').innerText='Enter a valid value'; return; }
+      let res;
+      if(t==='temp'){
+        if(f===to) res = v;
+        else if(f==='C' && to==='F') res = (v*9/5)+32;
+        else if(f==='F' && to==='C') res = (v-32)*5/9;
+      } else {
+        const base = v * unitMaps[t][f]; // convert to SI base (meters or kg)
+        res = base / unitMaps[t][to];
+      }
+      document.getElementById('unitResult').innerText = `${v} ${f} = ${Number(res).toFixed(4)} ${to}`;
+    });
+
+    /* ------------------ Age ------------------ */
+    document.getElementById('btnCalcAge').addEventListener('click', ()=>{
+      const val=document.getElementById('dob').value;
+      if(!val){ document.getElementById('ageResult').innerText='Select a date'; return; }
+      const d = new Date(val), now=new Date();
+      let years = now.getFullYear() - d.getFullYear();
+      let months = now.getMonth() - d.getMonth();
+      let days = now.getDate() - d.getDate();
+      if(days < 0){ months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+      if(months < 0){ years--; months += 12; }
+      document.getElementById('ageResult').innerText = `${years} years, ${months} months, ${days} days`;
+    });
+
+    /* ------------------ BMI ------------------ */
+    document.getElementById('btnCalcBMI').addEventListener('click', ()=>{
+      const w = parseFloat(document.getElementById('weight').value);
+      const hcm = parseFloat(document.getElementById('height').value);
+      if(isNaN(w) || isNaN(hcm) || hcm <= 0){ document.getElementById('bmiResult').innerText='Enter valid values'; return; }
+      const h = hcm / 100;
+      const bmi = w / (h*h);
+      const cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal' : bmi < 30 ? 'Overweight' : 'Obese';
+      document.getElementById('bmiResult').innerText = `BMI: ${bmi.toFixed(2)} • ${cat}`;
+    });
+
+    /* ------------------ Loan EMI ------------------ */
+    document.getElementById('btnCalcLoan').addEventListener('click', ()=>{
+      const P = parseFloat(document.getElementById('loanAmount').value);
+      const annual = parseFloat(document.getElementById('loanRate').value);
+      const years = parseFloat(document.getElementById('loanYears').value);
+      if(!isFinite(P) || !isFinite(annual) || !isFinite(years) || P<=0 || years<=0){ document.getElementById('loanResult').innerText='Enter valid values'; return; }
+      const r = (annual/100)/12;
+      const n = years*12;
+      const EMI = (P*r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+      const total = EMI*n; const interest = total - P;
+      document.getElementById('loanResult').innerText = `Monthly: ${EMI.toFixed(2)} • Interest: ${interest.toFixed(2)} • Total: ${total.toFixed(2)}`;
+    });
+
+    /* ------------------ Password ------------------ */
+    document.getElementById('btnGenPass').addEventListener('click', ()=>{
+      const len = Math.max(4, Math.min(64, Number(document.getElementById('passLength').value || 12)));
+      let pool = '';
+      if(document.getElementById('pLower').checked) pool += 'abcdefghijklmnopqrstuvwxyz';
+      if(document.getElementById('pUpper').checked) pool += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if(document.getElementById('pNum').checked) pool += '0123456789';
+      if(document.getElementById('pSym').checked) pool += '!@#$%^&*()_+[]{}<>?,.';
+      if(!pool) pool = 'abcdefghijklmnopqrstuvwxyz0123456789';
+      let out='';
+      const r = crypto.getRandomValues(new Uint32Array(len));
+      for(let i=0;i<len;i++) out += pool[r[i] % pool.length];
+      document.getElementById('passResult').innerText = out;
+    });
+
+    /* ------------------ QR ------------------ */
+    document.getElementById('btnGenQR').addEventListener('click', ()=>{
+      const text = (document.getElementById('qrText').value || '').trim();
+      if(!text){ document.getElementById('qrResult').innerText='Enter text or URL'; return; }
+      // use free QR generator image API (simple)
+      const src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(text);
+      document.getElementById('qrResult').innerHTML = `<img src="${src}" alt="QR code">`;
+    });
+
+    /* ------------------ Text Tools ------------------ */
+    document.getElementById('toUpper').addEventListener('click', ()=> {
+      const t = document.getElementById('txtInput').value;
+      document.getElementById('txtResult').innerText = t.toUpperCase();
+    });
+    document.getElementById('toLower').addEventListener('click', ()=> {
+      const t = document.getElementById('txtInput').value;
+      document.getElementById('txtResult').innerText = t.toLowerCase();
+    });
+    document.getElementById('btnCountWords').addEventListener('click', ()=> {
+      const t = document.getElementById('txtInput').value.trim();
+      const words = t ? t.split(/\s+/).length : 0;
+      const chars = document.getElementById('txtInput').value.length;
+      document.getElementById('txtResult').innerText = `Words: ${words} • Characters: ${chars}`;
+    });
+
+    /* ------------------ Calculator (professional, last) ------------------ */
+    (function buildCalculator(){
+      const keys = [
+        '7','8','9','/',
+        '4','5','6','*',
+        '1','2','3','-',
+        '0','.','=','+'
+      ];
+      const keypad = document.getElementById('calcKeypad');
+      let current = '';
+      keys.forEach(k=>{
+        const btn = document.createElement('button');
+        btn.className = 'key';
+        btn.setAttribute('type','button');
+        btn.textContent = k;
+        if('+-*/'.includes(k)) btn.classList.add('op');
+        if(k==='=') btn.classList.add('eq');
+        btn.addEventListener('click', ()=>{
+          if(k==='='){
+            try{
+              if(!/^[0-9+\-*/().\s]+$/.test(current)) throw 'Invalid';
+              const out = Function('"use strict";return('+current+')')();
+              current = String(out);
+            }catch(e){ current = 'Error'; }
+            document.getElementById('calcScreen').value = current;
+            return;
+          }
+          if(k==='.' || /[0-9]/.test(k) || '+-*/'.includes(k)){
+            current += k;
+            document.getElementById('calcScreen').value = current;
+          }
+        });
+        keypad.appendChild(btn);
+      });
+      document.getElementById('calcClear').addEventListener('click', ()=>{
+        current=''; document.getElementById('calcScreen').value='';
+      });
+    })();
+
+    /* ------------------ Visitor info (country, city, local time) ------------------ */
+    (async function visitor(){
+      const el = document.getElementById('visitor-info');
+      const box = document.getElementById('visitorBox');
+      try{
+        const res = await fetch('https://ipapi.co/json/');
+        if(!res.ok) throw 0;
+        const data = await res.json();
+
+        // format local time using detected timezone if available
+        let localTime = new Date().toLocaleTimeString();
+        try{
+          if(data.timezone) {
+            localTime = new Date().toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: data.timezone });
+          }
+        }catch(e){}
+
+        el.textContent = `${data.city || '—'}, ${data.country_name || data.country || '—'}  •  Local time: ${localTime}`;
+
+        const boxTxt = `IP: ${data.ip || '—'}\n${data.city || '—'}, ${data.region || '—'} — ${data.country_name || data.country || '—'}\nTimezone: ${data.timezone || '—'}\nLocal time: ${localTime}`;
+        if(box) box.innerHTML = boxTxt.replace(/\n/g, '<br>');
+      }catch(e){
+        // fallback: just show local time
+        const now = new Date();
+        const fallback = `Local time: ${now.toLocaleTimeString()}`;
+        el.textContent = fallback;
+        if(box) box.textContent = fallback;
+      }
+    })();
+
+    // Accessibility: allow keyboard navigation of menu via Enter
+    document.querySelectorAll('.menu-btn').forEach(b => {
+      b.addEventListener('keydown', e => { if(e.key === 'Enter') b.click(); });
+    });
+
+    // On first load, hide all tools then show currency (already done above by showTool)
+    // Make sure all .tool are hidden by default except the active one
+    document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+    document.getElementById('currency').classList.add('active');
+  })();
+  </script>
+</body>
+</html> 
+
 
 
 
